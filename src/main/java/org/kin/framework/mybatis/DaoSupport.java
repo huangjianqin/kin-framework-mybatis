@@ -24,7 +24,7 @@ public abstract class DaoSupport<E, BM extends BaseMapper<E>> implements BaseDao
      * 返回mapper
      */
     @Override
-    public BM mapper(){
+    public BM mapper() {
         return mapper;
     }
 
@@ -39,6 +39,11 @@ public abstract class DaoSupport<E, BM extends BaseMapper<E>> implements BaseDao
     }
 
     @Override
+    public int deleteById(E entity) {
+        return mapper.deleteById(entity);
+    }
+
+    @Override
     public final int deleteByMap(Map<String, Object> columnMap) {
         return mapper.deleteByMap(columnMap);
     }
@@ -46,6 +51,11 @@ public abstract class DaoSupport<E, BM extends BaseMapper<E>> implements BaseDao
     @Override
     public final int delete(Wrapper<E> queryWrapper) {
         return mapper.delete(queryWrapper);
+    }
+
+    @Override
+    public int deleteBatchIds(Collection<?> idList) {
+        return mapper.deleteBatchIds(idList);
     }
 
     @Override
